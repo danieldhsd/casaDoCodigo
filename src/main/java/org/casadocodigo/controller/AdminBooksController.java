@@ -37,6 +37,12 @@ public class AdminBooksController {
 	public void save() {
 		populateBookAuthor();
 		bookDAO.save(product);
+		clearObjects();
+	}
+	
+	private void clearObjects() {
+		this.product = new Book();
+		this.selectedAuthorsIds.clear();
 	}
 
 	private void populateBookAuthor() {
