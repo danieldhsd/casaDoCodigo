@@ -66,4 +66,5 @@ public class AdminBooksController {
 	public List<Integer> getSelectedAuthorsIds() {
 		return selectedAuthorsIds;
 	}
+
 }
