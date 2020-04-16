@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class Book {
@@ -15,6 +16,7 @@ public class Book {
 	private Integer id;
 	
 	private String title;
+	@Lob
 	private String description;
 	private Integer numberOfPages;
 	private BigDecimal price;

@@ -11,16 +11,7 @@ public class BookDAO {
 	private EntityManager manager;
 	
 	public void save(Book product) {
-		try {
-			manager.getTransaction().begin();
-			manager.persist(product);
-			manager.getTransaction().commit();
-		} catch (Exception e) {
-			manager.getTransaction().rollback();
-			e.printStackTrace();
-		} finally {
-			manager.close();
-		}
+		manager.persist(product);
 	}
 
 }
