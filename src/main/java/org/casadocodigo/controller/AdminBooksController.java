@@ -34,17 +34,13 @@ public class AdminBooksController {
 	}
 
 	@Transactional
-	public void save() {
+	public String save() {
 		populateBookAuthor();
 		bookDAO.save(product);
-		clearObjects();
+		
+		return "/produtos/lista?faces-redirect=true";
 	}
 	
-	private void clearObjects() {
-		this.product = new Book();
-		this.selectedAuthorsIds.clear();
-	}
-
 	private void populateBookAuthor() {
 		selectedAuthorsIds.stream().map( (id) -> {
 			return new Author(id);
