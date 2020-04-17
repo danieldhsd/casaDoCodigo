@@ -26,8 +26,6 @@ public class AdminBooksController {
 	@Inject
 	private AuthorDAO authorDAO;
 	@Inject
-	private FacesContext facesContext;
-	@Inject
 	private MessagesHelper messagesHelper;
 	
 	private List<Author> authors = new ArrayList<Author>();
