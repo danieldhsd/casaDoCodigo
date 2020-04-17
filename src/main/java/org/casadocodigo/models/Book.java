@@ -100,5 +100,9 @@ public class Book {
 	public void setReleaseDate(Calendar releaseDate) {
 		this.releaseDate = releaseDate;
 	}
+
+	public void setAuthors(List<Author> authors) {
+		this.authors = authors;
+	}
 	
 }

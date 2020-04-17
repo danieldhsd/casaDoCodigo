@@ -38,18 +38,11 @@ public class AdminBooksController {
 
 	@Transactional
 	public String save() {
-		populateBookAuthor();
 		bookDAO.save(product);
 		
 		messagesHelper.addFlash(new FacesMessage("Livro Gravado com Sucesso"));
 		
 		return "/produtos/lista?faces-redirect=true";
-	}
-	
-	private void populateBookAuthor() {
-		selectedAuthorsIds.stream().map( (id) -> {
-			return new Author(id);
-		}).forEach(product :: add);
 	}
 	
 	public void setSelectedAuthorsIds(List<Integer> selectedAuthorsIds) {
