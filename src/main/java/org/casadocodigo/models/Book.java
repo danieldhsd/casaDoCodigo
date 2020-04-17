@@ -2,6 +2,7 @@ package org.casadocodigo.models;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -38,6 +40,9 @@ public class Book {
 	
 	@DecimalMin("20")
 	private BigDecimal price;
+	
+	@Future
+	private Calendar releaseDate;
 	
 	@ManyToMany
 	@Size(min = 1)
@@ -86,6 +91,14 @@ public class Book {
 
 	public List<Author> getAuthors() {
 		return authors;
+	}
+
+	public Calendar getReleaseDate() {
+		return releaseDate;
+	}
+
+	public void setReleaseDate(Calendar releaseDate) {
+		this.releaseDate = releaseDate;
 	}
 	
 }

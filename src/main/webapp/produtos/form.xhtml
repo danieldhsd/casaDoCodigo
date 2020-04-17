@@ -1,6 +1,7 @@
 <html xmlns:h="http://java.sun.com/jsf/html"
 		xmlns:jsf="http://xmlns.jcp.org/jsf"
-		xmlns:f="http://xmlns.jcp.org/jsf/core">
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
+		xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:body>
 	<h:form prependId="false">
 		<h:messages />
@@ -20,6 +21,11 @@
 		<div>
 			<h:outputLabel>Preço</h:outputLabel>
 			<h:inputText id="preco" value="#{adminBooksController.product.price}" />
+		</div>
+		<div>
+			<h:outputLabel>Data de Lançamento</h:outputLabel>
+			<h:inputText pt:type="date" value="#{adminBooksController.product.releaseDate}">
+			</h:inputText>
 		</div>
 		<div>
 			<h:outputLabel value="Autores" />
