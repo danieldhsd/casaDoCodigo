@@ -3,27 +3,27 @@
 		xmlns:f="http://xmlns.jcp.org/jsf/core"
 		xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:body>
-	<h:form prependId="false">
+	<h:form prependId="false" enctype="multipart/form-data">
 		<h:messages />
 		<div>
-			<h:outputLabel>Titulo</h:outputLabel>
+			<h:outputLabel value="Titulo"/>
 			<h:inputText id="titulo" value="#{adminBooksController.product.title}"/>
 		</div>
 		<div>
-			<h:outputLabel>Descrição</h:outputLabel>
+			<h:outputLabel value="Descrição"/>
 			<h:inputTextarea cols="20" rows="10" value="#{adminBooksController.product.description}"
 							id="descricao"/>
 		</div>
 		<div>
-			<h:outputLabel>Número de páginas</h:outputLabel>
+			<h:outputLabel value="Número de páginas" />
 			<h:inputText id="numPaginas" value="#{adminBooksController.product.numberOfPages}" />
 		</div>
 		<div>
-			<h:outputLabel>Preço</h:outputLabel>
+			<h:outputLabel value="Preço" />
 			<h:inputText id="preco" value="#{adminBooksController.product.price}" />
 		</div>
 		<div>
-			<h:outputLabel>Data de Lançamento</h:outputLabel>
+			<h:outputLabel value="Data de Lançamento"/>
 			<h:inputText pt:type="date" value="#{adminBooksController.product.releaseDate}">
 			</h:inputText>
 		</div>
@@ -34,7 +34,12 @@
 						itemLabel="#{author.name}" itemValue="#{author}"/>
 			</h:selectManyListbox>
 		</div>
-			<h:commandButton value=" Gravar" action="#{adminBooksController.save()}"/>
+		<div>
+			<h:outputLabel value="Capa do Livro" />
+			<h:inputFile id="sumary" label="Sumario do Livro" value="#{adminBooksController.summary}"/>
+		</div>
+		
+		<h:commandButton value=" Gravar" action="#{adminBooksController.save()}"/>
 	</h:form>
 </h:body>
 </html>

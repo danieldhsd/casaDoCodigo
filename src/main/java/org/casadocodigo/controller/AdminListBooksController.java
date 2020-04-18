@@ -22,9 +22,8 @@ public class AdminListBooksController {
 	private void init() {
 		this.books = bookDAO.list();
 	}
+	
 	public List<Book> getBooks() {
 		return books;
-	}
-	
-	
+	}	
 }
