@@ -11,11 +11,11 @@ import javax.servlet.http.Part;
 public class FileSaver {
 	
 	@Inject
-	HttpServletRequest request;
+	private HttpServletRequest request;
 	
 	private static final String CONTENT_DISPOSITION = "content-disposition";
 	
-	private static final String FILENAME_KEY = "filename";
+	private static final String FILENAME_KEY = "filename=";
 
 	public String write(String baseFolder, Part multipartFile) {
 		String serverPath = request.getServletContext().getRealPath("/" + baseFolder);
