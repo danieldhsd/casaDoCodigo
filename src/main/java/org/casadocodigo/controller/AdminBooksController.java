@@ -13,6 +13,7 @@ import javax.transaction.Transactional;
 
 import org.casadocodigo.dao.AuthorDAO;
 import org.casadocodigo.dao.BookDAO;
+import org.casadocodigo.infra.FileSaver;
 import org.casadocodigo.infra.MessagesHelper;
 import org.casadocodigo.models.Author;
 import org.casadocodigo.models.Book;
@@ -28,12 +29,12 @@ public class AdminBooksController {
 	private AuthorDAO authorDAO;
 	@Inject
 	private MessagesHelper messagesHelper;
+	@Inject
+	private FileSaver fileSaver;
 	
 	private Part summary;
 	
-	
 	private List<Author> authors = new ArrayList<Author>();
-	private List<Integer> selectedAuthorsIds = new ArrayList<>();
 
 	@PostConstruct
 	public void init() {
@@ -42,8 +43,7 @@ public class AdminBooksController {
 
 	@Transactional
 	public String save() throws IOException {
-		
-		summary.write("/home/danieldhsd/casadocodigo/livros/" + summary.getSubmittedFileName());
+		product.setSummaryPath(fileSaver.write(summary, "livros"));
 		
 		bookDAO.save(product);
 		
@@ -52,20 +52,12 @@ public class AdminBooksController {
 		return "/produtos/lista?faces-redirect=true";
 	}
 	
-	public void setSelectedAuthorsIds(List<Integer> selectedAuthorsIds) {
-		this.selectedAuthorsIds = selectedAuthorsIds;
-	}
-	
 	public Book getProduct() {
 		return product;
 	}
 
 	public List<Author> getAuthors() {
 		return authors;
-	}
-
-	public List<Integer> getSelectedAuthorsIds() {
-		return selectedAuthorsIds;
 	}
 
 	public Part getSummary() {
