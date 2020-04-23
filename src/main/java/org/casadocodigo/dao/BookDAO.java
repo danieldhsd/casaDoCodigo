@@ -21,4 +21,13 @@ public class BookDAO {
 				Book.class).getResultList();
 	}
 
+	public List<Book> lastReleases() {
+		return manager.createQuery("select obj from Book obj order by obj.releaseDate desc", 
+				Book.class).setMaxResults(5).getResultList();
+	}
+
+	public List<Book> olderBooks() {
+		return manager.createQuery("select obj from Book obj", Book.class)
+				.setMaxResults(20).getResultList();
+	}
 }
