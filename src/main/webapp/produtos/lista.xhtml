@@ -6,7 +6,8 @@
 	<h:body>
 		<h:messages />
 	
-		<h:dataTable value="#{adminListBooksController.books}" var="book">
+		<h:dataTable rendered="#{adminListBooksController.books != null}" 
+			value="#{adminListBooksController.books}" var="book">
 			<h:column>
 				<f:facet name="header">Titulo</f:facet>
 				#{book.title}
@@ -36,7 +37,7 @@
 			
 			<h:column>
 				<f:facet name="header">Sumário</f:facet>
-				<h:outputLink value="#{book.summaryPath}">#{book.summaryPath}</h:outputLink>
+				<img src="#{request.contextPath}/file/#{book.summaryPath}" width="20%" height="20%"/>
 			</h:column>
 		</h:dataTable>
 	</h:body>
