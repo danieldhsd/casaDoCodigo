@@ -30,4 +30,13 @@ public class BookDAO {
 		return manager.createQuery("select obj from Book obj", Book.class)
 				.setMaxResults(20).getResultList();
 	}
+
+	public Book searchById(Integer id) {
+		String query = "select obj from Book obj join fetch obj.authors "
+				+ " where obj.id = :ID";
+
+		return manager.createQuery(query, Book.class)
+				.setParameter("ID", id)
+				.getSingleResult();
+	}
 }
